@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="bg-black" lang="en" oncontextmenu="console.log('spin.rip <3'); return false;">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+      content="the endurance of pain or hardship without the display of feelings and without complaint.">
+    <meta name="keywords" content="website, information, resources, topic">
+    <meta name="author" content="spinfal">
+
+    <!-- Open Graph meta tags for social media optimization -->
+    <meta property="og:title" content="sto·i·cism">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stoicism.spin.rip">
+    <meta property="og:image" content="https://projects.spin.rip/stoicism/stoic.jpg">
+    <meta property="og:description"
+      content="the endurance of pain or hardship without the display of feelings and without complaint.">
+    <meta property="og:site_name" content="sto·i·cism">
+
+    <!-- Twitter Card meta tags for social media optimization -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="sto·i·cism">
+    <meta name="twitter:description"
+      content="the endurance of pain or hardship without the display of feelings and without complaint.">
+    <meta name="twitter:image" content="https://projects.spin.rip/stoicism/stoic.jpg">
+    <meta name="twitter:site" content="@spinfal">
+
+    <!-- Canonical URL meta tag for SEO optimization -->
+    <link rel="canonical" href="https://stoicism.spin.rip">
+
+    <!-- Robots meta tag for SEO optimization -->
+    <meta name="robots" content="index, nofollow">
+
+    <!-- Googlebot meta tag for SEO optimization -->
+    <meta name="googlebot" content="index, nofollow">
+
+    <!-- Bingbot meta tag for SEO optimization -->
+    <meta name="bingbot" content="index, nofollow">
+
+    <title>s t o i c</title>
+
+    <link rel="icon" type="image/png" href="https://projects.spin.rip/stoicism/favicon.png">
+
+    <link href="/css/output.css" rel="stylesheet">
+    <!-- the line below is for development only. only one line should be commented out, not both. -->
+    <!-- <script src="https://cdn.tailwindcss.com/"></script> -->
+
+    <style>
+      * {
+        cursor: url("https://projects.spin.rip/stoicism/cursor.png"), default;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+
+      #bg {
+        background-image: url('https://projects.spin.rip/stoicism/stoic<%= image %>.jpg');
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <span
+      class="bg-black text-white mr-5 select-none text-xl rounded-lg opacity-40 hover:opacity-80 max-w-3xl duration-1000 p-4 mt-5 ml-5 absolute">
+      <%= quote %><br>
+        <span class="text-sm">- <%= author %></span>
+    </span>
+    <div class="flex h-screen justify-center items-center flex-col">
+      <div id="bg" class="w-full h-screen bg-cover bg-no-repeat bg-center">
+        <div class="w-full h-full flex bg-[url('https://projects.spin.rip/stoicism/dot.png')]"></div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    let titleArray = ["“Until we have begun", "to go without them,", "we fail to realize", "how unnecessary many things are.", "We\'ve been using them", "not because we needed them", "but because we had them.”", "― Lucius Annaeus Seneca,", "Letters from a Stoic"];
+    let currentIndex = 0;
+
+    function recursiveAnimateTitle(string) {
+      let firstLetter = string[0];
+      let title = document.querySelector('title');
+      title.innerHTML += firstLetter;
+      if (string.length > 1) {
+        setTimeout(function () {
+          recursiveAnimateTitle(string.substring(1));
+        }, 100);
+      } else {
+        setTimeout(function () {
+          if (currentIndex < titleArray.length - 1) {
+            currentIndex++;
+            animateTitle(titleArray[currentIndex]);
+          } else {
+            currentIndex = 0;
+            animateTitle(titleArray[currentIndex]);
+          }
+        }, 2500);
+      }
+    }
+
+    function animateTitle(string) {
+      document.querySelector('title').innerHTML = "";
+      recursiveAnimateTitle(string);
+    }
+
+    window.onload = animateTitle(titleArray[currentIndex]);
+  </script>
+
+</html>
